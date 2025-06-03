@@ -36,7 +36,6 @@ public class Main {
                 case 1:
                     //CREAR VUELOS
 
-
                     try {
                         String origenvuelo1 = JOptionPane.showInputDialog("Diga el origen del vuelo 1:");
                         String destinovuelo1 = JOptionPane.showInputDialog("Diga el destino del vuelo 1:");
@@ -81,6 +80,7 @@ public class Main {
                         log.info(listadevuelos.get(i).toString());
                     }
                     break;
+
                 case 3:
                     //BUSCAR UN VUELO POR SU ID
                     try {
@@ -101,6 +101,7 @@ public class Main {
 
                     }
                     break;
+
                 case 4:
                     //ACTUALIZAR UN VUELO
                     try {
@@ -123,6 +124,7 @@ public class Main {
                         boolean actualizado = vuelosDAO.actualizar(vueloparabuscaryactualizar);
                         log.info("Vuelo actualizado: " + vueloparabuscaryactualizar.toString());
                         log.info("Actualizado: " + actualizado);
+
                         //VERIFICAR ACTUALIZACIÓN
                         Vuelos vueloactualizado = vuelosDAO.buscarPorId(idparaactualizar);
                         log.info("Verificacion del vuelo: " + vueloactualizado.toString());
@@ -131,6 +133,7 @@ public class Main {
                         log.error("El campo esta vacio o no corresponde el tipo de dato.");
                     }
                   break;
+
                 case 5:
                     //ELIMINAR VUELO
                     try {
@@ -142,6 +145,7 @@ public class Main {
                         if (eliminado) {
                             log.info("Se elimino el vuelo, si es que existìa previamente en la tabla.");
                         }
+
                         //LISTA NUEVA DESPUÉS DE LA ELIMINACIÓN
                         List<Vuelos> listadevuelosnueva = vuelosDAO.listarTodos();
                         log.info("Lista de vuelos nueva: ");
@@ -153,14 +157,18 @@ public class Main {
                         log.error("El campo esta vacio o no corresponde el tipo de dato.");
                     }
                     break;
+
                 case 6:
                     terminado = true;
                     break;
+
                 default:
                     System.out.println("Numero no valido");
                     break;
             }
         }
+
+
         //REPETICIÓN DEL MISMO PROCESO PARA AVIONES
         DatabaseUtil.iniciarbdavion();
         VuelosDAO<Avion>avionDAO=new AvionDAOImpl();
@@ -205,6 +213,7 @@ public class Main {
                         log.error("Los campos estàn vacìos o los tipos de datos no corresponde.");
                     }
                     break;
+
                 case 2:
                     //LEER TODOS LOS AVIONES
                     log.info("Lista de todos los aviones: ");
@@ -213,6 +222,7 @@ public class Main {
                         log.info(listadeaviones.get(i).toString());
                     }
                     break;
+
                 case 3:
                     //BUSCAR UN AVION POR SU ID
                     try {
@@ -232,6 +242,7 @@ public class Main {
                         log.error("El campo esta vacio o no corresponde el tipo de dato.");
                     }
                     break;
+
                 case 4:
                     //ACTUALIZAR UN AVION
                     try {
@@ -271,6 +282,7 @@ public class Main {
                         if (avioneliminado) {
                             log.info("Se elimino el avion, si es que existìa previamente en la tabla.");
                         }
+
                         //LISTA NUEVA DESPUÉS DE LA ELIMINACIÓN
                         List<Avion> listadeavionesnueva = avionDAO.listarTodos();
                         log.info("Lista de aviones nueva: ");
@@ -282,9 +294,11 @@ public class Main {
                         log.error("El campo esta vacio o no corresponde el tipo de dato.");
                     }
                     break;
+
                 case 6:
                     terminado2=true;
                     break;
+
                 default:
                     System.out.println("El numero no es valido");
                     break;
