@@ -25,6 +25,7 @@ public class Main {
         //CREAR VUELOS
         //LOS try-catch SE UTILIZAN PARA VALIDAR EL DATO INGRESADO POR EL USUARIO
         // EN LA MAYORIA DE OPERACIONES
+
         try{
             String origenvuelo1=JOptionPane.showInputDialog("Diga el origen del vuelo 1:");
             String destinovuelo1=JOptionPane.showInputDialog("Diga el destino del vuelo 1:");
