@@ -92,11 +92,17 @@ public class Main {
                 throw new IllegalArgumentException();
             }
             Vuelos vueloparabuscaryactualizar = vuelosDAO.buscarPorId(idparaactualizar);
+            String origennuevo = JOptionPane.showInputDialog("Diga el nuevo origen: ");
             String destinonuevo = JOptionPane.showInputDialog("Diga el nuevo destino: ");
-            if(destinonuevo==null||destinonuevo.isEmpty()){
+            int numeroavionnuevo = Integer.parseInt(JOptionPane.showInputDialog("Diga el nuevo numero del avion: "));
+            int tiempominutosnuevo = Integer.parseInt(JOptionPane.showInputDialog("Diga el nuevo tiempo (en minutos): "));
+            if(destinonuevo==null||destinonuevo.isEmpty() || origennuevo==null || origennuevo.isEmpty()|| numeroavionnuevo<=0 || tiempominutosnuevo<=0){
                 throw new IllegalArgumentException();
             }
             vueloparabuscaryactualizar.setDestino(destinonuevo);
+            vueloparabuscaryactualizar.setNumeroavion(numeroavionnuevo);
+            vueloparabuscaryactualizar.setOrigen(origennuevo);
+            vueloparabuscaryactualizar.setTiempominutos(tiempominutosnuevo);
             boolean actualizado = vuelosDAO.actualizar(vueloparabuscaryactualizar);
             log.info("Vuelo actualizado: " + vueloparabuscaryactualizar.toString());
             log.info("Actualizado: " + actualizado);
@@ -178,10 +184,12 @@ public class Main {
             }
             Avion avionparabuscaryactualizar = avionDAO.buscarPorId(idparaactualizaravion);
             String patentenueva = JOptionPane.showInputDialog("Diga la nueva patente: ");
-            if(patentenueva==null ||patentenueva.isEmpty()){
+            int numeroasientosnuevo=Integer.parseInt(JOptionPane.showInputDialog("Diga la cantidad de asientos nueva:"));
+            if(patentenueva==null ||patentenueva.isEmpty() || numeroasientosnuevo<=0){
                 throw new IllegalArgumentException();
             }
             avionparabuscaryactualizar.setPatente(patentenueva);
+            avionparabuscaryactualizar.setNumeroasientos(numeroasientosnuevo);
             boolean actualizadoavion = avionDAO.actualizar(avionparabuscaryactualizar);
             log.info("Avion actualizado: " + avionparabuscaryactualizar.toString());
             log.info("Actualizado: " + actualizadoavion);
